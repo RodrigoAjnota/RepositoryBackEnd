@@ -1,91 +1,36 @@
-// const mostrarLista = (lista = []) => {
-//     if ( lista.length === 0 ){
-//         console.log("La lista esta vacia");
-//     } else {
-//         lista.forEach(element => {
-//             console.log(element)
-//         });
-//     }
-// };
+const Users = require("./desafio2");
+const manager = new Users()
 
-// mostrarLista()
+//Se crea un usuario
+let user = {
+    first_name: "Bruce",
+    last_name: "Wayne",
+    username: "Batman",
+    age: 48,
+    email: "bruce@wayne.com",
+}
 
-// ((lista = []) => {
-//     if ( lista.length === 0 ){
-//         console.log("La lista esta vacia");
-//     } else {
-//         lista.forEach(element => {
-//             console.log(element)
-//         });
-//     }
-// })()
+//Llamar al usuario
+manager.save(user).then((response) => {
+    console.log(response);
+})
 
+//Llamar a la funcion getAll
+manager.getAll().then((response) => {
+    console.log(response)
+})
 
-// class Contador {
-//     constructor(responsable) {
-//         this.responsable = responsable;
-//         this.cuenta = 0;
-//     }
-//     static contadorGlobal = 0;
-    
-//     obtenerResponsable = () => {
-//         console.log(`El responsable es ${this.responsable}`)
-//     };
+//Llamar a la funcion getById
+manager.getById(2).then((response) => {
+    console.log(response)
+})
 
-//     obtenerCuentaIndividual = () => {
-//         console.log(`El contador de ${this.responsable} tiene ${this.cuenta} contados`)
-//     }
-//     obtenerCuentaGlobal = () => {
-//         return Contador.contadorGlobal;
-//     }
-//     contar = () => {
-//         this.cuenta++;
-//         Contador.contadorGlobal++;
-//     }
-// }
+//Llamar a la funcion deleteById
+manager.deleteById(3).then((response) => {
+    console.log(response)
+})
 
-// const contador1 = new Contador("Matias");
-// const contador2 = new Contador("Miguel");
-
-// contador1.obtenerResponsable();
-// contador2.obtenerResponsable();
-
-// contador1.contar();
-// contador2.contar();
-// contador2.contar();
-
-// contador1.obtenerCuentaIndividual();
-// contador2.obtenerCuentaIndividual();
-
-// let cuenta1 = contador2.obtenerCuentaGlobal();
-
-// console.log(cuenta1);
-
-// const contador3 = new Contador("Ingrid");
-
-// console.log(contador3.obtenerCuentaGlobal());
-
-
-// const mostrarLetras = (palabra, callback) => {
-//     let index = 0;
-//     const timer = setInterval(() => {
-//         console.log(palabra[index])
-//         index++;
-//         if (index >= palabra.length) {
-//             clearInterval(timer);
-//             callback();
-//         }
-//     },1000);
-// }
-
-// const fin = () => console.log('Terminé');
-
-// mostrarLetras('queso',fin);
-
-// setTimeout(() => {
-//     mostrarLetras('queso',fin);
-// },250);
-
-// setTimeout(() => {
-//    mostrarLetras('queso',fin); 
-// },500);
+//Llamar a la funcion deleteAll
+manager.deleteAll().then((response) => {
+    console.log(response)
+})
